@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.fingdo.statelayout.StateLayout
+        xmlns:sl="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/mStateLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        sl:emptyText="Empty"
+        android:layout_gravity="center"
+        sl:errorText="加载异常"
+        sl:loadingText="Loading..."
+        sl:loginText="Sign in"
+        sl:noNetworkImg="@drawable/ic_state_no_network"
+        sl:noNetworkText="No Network"
+        sl:timeOutImg="@drawable/ic_state_time_out"
+        sl:timeOutText="Timeout">
+        <Button
+            android:id="@+id/btnRequest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请求网络"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </com.fingdo.statelayout.StateLayout>
+</android.support.constraint.ConstraintLayout>

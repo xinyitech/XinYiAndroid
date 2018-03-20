@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/top"
+        layout="@layout/include_head" />
+    <LinearLayout
+        android:id="@+id/seach_group"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </LinearLayout>
+    <com.fingdo.statelayout.StateLayout
+        xmlns:sl="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/mStateLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        sl:emptyText="Empty"
+        android:layout_gravity="center"
+        sl:errorText="加载异常"
+        sl:loadingText="Loading..."
+        sl:loginText="Sign in"
+        sl:noNetworkImg="@drawable/ic_state_no_network"
+        sl:noNetworkText="No Network"
+        sl:timeOutImg="@drawable/ic_state_time_out"
+        sl:timeOutText="Timeout">
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/m_swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/m_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </android.support.v7.widget.RecyclerView>
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </com.fingdo.statelayout.StateLayout>
+</LinearLayout>
