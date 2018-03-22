@@ -1,4 +1,4 @@
-package com.xinyiandroid.api;
+package com.xylibrary.http;
 
 import java.io.Serializable;
 

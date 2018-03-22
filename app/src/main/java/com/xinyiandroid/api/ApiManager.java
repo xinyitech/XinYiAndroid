@@ -2,6 +2,8 @@ package com.xinyiandroid.api;
 
 import com.lzy.okgo.OkGo;
 import com.lzy.okrx2.adapter.ObservableBody;
+import com.xylibrary.http.ResultConvert;
+import com.xylibrary.http.ResultEntity;
 
 import org.json.JSONException;
 import org.json.JSONObject;

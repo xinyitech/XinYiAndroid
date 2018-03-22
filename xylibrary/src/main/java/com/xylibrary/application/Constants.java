@@ -1,4 +1,4 @@
-package com.xinyiandroid.application;
+package com.xylibrary.application;
 
 /**
  * Created by jiajun.wang on 2018/3/19.
@@ -17,4 +17,5 @@ public class Constants {
     public final static String UNKNOWERROR = "未知异常";
     public final static String NETERROR = "网络异常";
     public final static String REQUESTFAIL = "请求失败";
+    public final static String TIMEOUT = "";
 }
