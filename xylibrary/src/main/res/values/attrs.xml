@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <declare-styleable name="FieldView" tools:ignore="ResourceName">
+        <attr name="comm_labelTextSize" format="dimension"/>
+        <attr name="comm_labelWidth" format="dimension"/>
+        <attr name="comm_labelTextColor" format="reference"/>
+        <attr name="comm_labelBgColor" format="reference"/>
+        <attr name="comm_label_name" format="string"/>
+        <attr name="comm_line_half_show" format="boolean"/>
+        <attr name="comm_field_index" format="integer"/>
+        <attr name="comm_edittext_hint" format="string"/>
+        <attr name="comm_edittext_line" format="integer"/>
+        <attr name="comm_must" format="boolean"/>
+        <attr name="comm_showMustInput" format="boolean"/>
+        <attr name="comm_field_name" format="string"/>
+        <attr name="comm_init_content" format="string"/>
+        <attr name="comm_warnMessager" format="string"/>
+        <attr name="comm_textIcon" format="reference"/>
+        <attr name="comm_contentType" format="enum">
+            <enum name="TYPE_EDITTEXT" value="1"/>
+            <enum name="TYPE_TEXTVIEW" value="2"/>
+            <enum name="TYPE_RADIOGROUP" value="3"/>
+            <enum name="TYPE_SPINNER" value="4"/>
+            <enum name="TYPE_HIDDENVIEW" value="5"/>
+        </attr>
+        <attr name="comm_labelWithMustIcon" format="boolean"/>
+        <attr name="comm_fieldViewBgColor" format="reference"/>
+        <attr name="comm_valueTextSize" format="dimension"/>
+        <attr name="comm_valueBgColor" format="reference"/>
+        <attr name="comm_valueTextColor" format="reference"/>
+        <attr name="comm_dividedColor" format="reference"/>
+        <attr name="comm_fieldDivided" format="boolean"/>
+        <attr name="comm_formDivided" format="boolean"/>
+        <attr name="comm_formHorizontal" format="boolean"/>
+    </declare-styleable>
+
+
+</resources>

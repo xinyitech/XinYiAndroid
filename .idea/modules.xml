@@ -3,9 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/XinYiAndroid.iml" filepath="$PROJECT_DIR$/XinYiAndroid.iml" />
+      <module fileurl="file://E:\AndroidSpace\XinYiAndroid\XinYiAndroid.iml" filepath="E:\AndroidSpace\XinYiAndroid\XinYiAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\AndroidSpace\XinYiAndroid\app\app.iml" filepath="E:\AndroidSpace\XinYiAndroid\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/xylibrary/xylibrary.iml" filepath="$PROJECT_DIR$/xylibrary/xylibrary.iml" />
+      <module fileurl="file://E:\AndroidSpace\XinYiAndroid\xylibrary\xylibrary.iml" filepath="E:\AndroidSpace\XinYiAndroid\xylibrary\xylibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/xymaplibrary/xymaplibrary.iml" filepath="$PROJECT_DIR$/xymaplibrary/xymaplibrary.iml" />
+      <module fileurl="file://E:\AndroidSpace\XinYiAndroid\xymaplibrary\xymaplibrary.iml" filepath="E:\AndroidSpace\XinYiAndroid\xymaplibrary\xymaplibrary.iml" />
     </modules>
   </component>
 </project>

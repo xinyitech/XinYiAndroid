@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.xylibrary.form.FormLayout
+                android:id="@+id/form"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/comm_grey"
+                    android:gravity="center_vertical"
+                    android:text="各种view"/>
+
+                <com.xylibrary.form.FieldView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:comm_contentType="TYPE_EDITTEXT"
+                    app:comm_edittext_hint="请输入"
+                    app:comm_field_name="xinbie"
+                    app:comm_label_name="EditView"
+                    app:comm_must="true"
+                    app:comm_warnMessager="EditView"/>
+
+                <com.xylibrary.form.FieldView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:comm_contentType="TYPE_TEXTVIEW"
+                    app:comm_edittext_hint="请选择"
+                    app:comm_field_name="xinbie"
+                    app:comm_label_name="TextView"
+                    app:comm_must="true"
+                    app:comm_textIcon="@mipmap/ic_launcher"
+                    app:comm_warnMessager="TextView"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.xylibrary.form.FieldView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        app:comm_contentType="TYPE_RADIOGROUP"
+                        app:comm_field_name="sex"
+                        app:comm_init_content="男_1,女_2,未知_3,check_2"
+                        app:comm_label_name="性别(固定数据):"
+                        app:comm_must="true"/>
+
+                    <com.xylibrary.form.FieldView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:comm_contentType="TYPE_RADIOGROUP"
+                        app:comm_field_name="sex1"
+                        app:comm_label_name="性别(动态设置):"
+                        app:comm_must="true"/>
+                </LinearLayout>
+
+                <com.xylibrary.form.FieldView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:comm_contentType="TYPE_SPINNER"
+                    app:comm_field_name="sex"
+                    app:comm_init_content="男_1,女_2,未知_3"
+                    app:comm_label_name="性        别:"
+                    app:comm_must="true"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/comm_grey"
+                    android:gravity="center_vertical"
+                    android:text="自定义view"/>
+
+                <com.xylibrary.form.FieldView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:comm_dividedColor="@color/comm_orange"
+                    app:comm_fieldViewBgColor="@color/comm_red"
+                    app:comm_field_name="personname1"
+                    app:comm_formDivided="true"
+                    app:comm_formHorizontal="true"
+                    app:comm_init_content="ceshixiaceshixiaceshixiaceshceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixiaceshixia"
+                    app:comm_label_name="自  定  义:"
+                    app:comm_must="false"
+                    app:comm_valueBgColor="@color/comm_amber">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="11111"/>
+                </com.xylibrary.form.FieldView>
+
+                <com.xylibrary.form.FieldView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:comm_edittext_line="5"
+                    app:comm_field_name="sg"
+                    app:comm_init_content="ffff"
+                    app:comm_label_name="身高(cm):"
+                    app:comm_must="true">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="请输入身高"
+                        android:inputType="numberDecimal"/>
+                </com.xylibrary.form.FieldView>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/comm_grey"
+                    android:gravity="center_vertical"
+                    android:text="摆放位置和分割线"/>
+
+
+                <com.xylibrary.form.FieldView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:comm_dividedColor="@color/comm_orange"
+                    app:comm_fieldDivided="true"
+                    app:comm_field_name="zdy1"
+                    app:comm_formDivided="false"
+                    app:comm_init_content="hhhhhhhhhhhh"
+                    app:comm_labelWithMustIcon="true"
+                    app:comm_label_name="自  定  义1:"
+                    app:comm_must="true"
+                    app:comm_valueTextSize="18sp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </com.xylibrary.form.FieldView>
+
+
+                <com.xylibrary.form.FieldView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:comm_contentType="TYPE_SPINNER"
+                    app:comm_dividedColor="@color/comm_red"
+                    app:comm_fieldDivided="false"
+                    app:comm_field_name="sex"
+                    app:comm_formDivided="true"
+                    app:comm_formHorizontal="false"
+                    app:comm_init_content="男_1,女_2,未知_3"
+                    app:comm_label_name="性别:在上面"
+                    app:comm_must="true"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/comm_grey"
+                    android:gravity="center_vertical"
+                    android:text="背景色"/>
+
+                <com.xylibrary.form.FieldView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:comm_contentType="TYPE_EDITTEXT"
+                    app:comm_edittext_hint="请输入"
+                    app:comm_fieldViewBgColor="@color/comm_amber"
+                    app:comm_field_name="xinbie"
+                    app:comm_label_name="底部背景色"
+                    app:comm_must="true"
+                    app:comm_warnMessager="底部背景色"/>
+
+                <com.xylibrary.form.FieldView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:comm_contentType="TYPE_EDITTEXT"
+                    app:comm_edittext_hint="请输入"
+                    app:comm_field_name="xinbie"
+                    app:comm_labelBgColor="@color/comm_red"
+                    app:comm_label_name="左边背景色"
+                    app:comm_must="true"
+                    app:comm_warnMessager="左边背景色"/>
+
+
+                <com.xylibrary.form.FieldView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:comm_contentType="TYPE_EDITTEXT"
+                    app:comm_edittext_hint="请输入"
+                    app:comm_field_name="xinbie"
+                    app:comm_label_name="右边背景色"
+                    app:comm_must="true"
+                    app:comm_valueBgColor="@color/comm_green"
+                    app:comm_warnMessager="右边背景色"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/comm_grey"
+                    android:gravity="center_vertical"
+                    android:text="代码添加的"/>
+
+
+            </com.xylibrary.form.FormLayout>
+
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="getParams"
+        android:text="获取参数"/>
+
+</LinearLayout>
