@@ -4,11 +4,11 @@ ext {
             compileSdkVersion: 26,
             buildToolsVersion: '26.0.2',
             applicationId    : "com.xinyiandroid",
-            minSdkVersion    : 19,
-            targetSdkVersion : 26,
+            minSdkVersion    : 15,
+            targetSdkVersion : 22,
             versionCode      : 20180316,
             versionName      : "V1.3.8",
-            multiDexEnabled  : true
+            multiDexEnabled  : false
     ]
 
     def dependVersion = [
@@ -30,7 +30,7 @@ ext {
             "okgo"                         : "com.github.xinyitech.okhttp-OkGo:okgo:v3.0.4",
             "annotationProcessor"          : "com.jakewharton:butterknife-compiler:8.5.1",
             //base
-            "appcompat-v7"                 : "com.android.support:appcompat-v7:26.+",
+            "appcompat-v7"                 : "com.android.support:appcompat-v7:${dependVersion.support}",
             "cardview-v7"                  : "com.android.support:cardview-v7:${dependVersion.support}",
             "recyclerview-v7"              : "com.android.support:recyclerview-v7:${dependVersion.support}",
             "design"                       : "com.android.support:design:${dependVersion.support}",
