@@ -33,9 +33,10 @@ public class MainActivity extends AppCompatActivity {
         List<ImageTitleModel> imageTitleModels = new ArrayList<>();
         imageTitleModels.add(new ImageTitleModel(R.mipmap.ic_launcher, "StateLayoutActivity").setClazz(StateLayoutActivity.class));
         imageTitleModels.add(new ImageTitleModel(R.mipmap.ic_launcher, "FormActivity").setClazz(FormActivity.class));
+        imageTitleModels.add(new ImageTitleModel(R.mipmap.ic_launcher, "BdMapActivity").setClazz(BdMapActivity.class));
         titleAdapter.addData(imageTitleModels);
 
-        RecyclerViewHelper.initRecyclerViewG(mRecyclerView, true, titleAdapter,3);
+        RecyclerViewHelper.initRecyclerViewG(mRecyclerView, true, titleAdapter, 3);
 
         titleAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
