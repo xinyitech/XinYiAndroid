@@ -30,10 +30,10 @@ public abstract class BaseLocationActivity<T extends RxPresenter> extends BaseAc
         if (mPresenter!=null)
             mPresenter.attachView(this);
         initView();
-        initMap();
+        initLbs();
     }
 
-    private void initMap() {
+    private void initLbs() {
         mLocationClient = new LocationClient(getApplicationContext());
         //声明LocationClient类
         LocationClientOption option = new LocationClientOption();
@@ -43,6 +43,7 @@ public abstract class BaseLocationActivity<T extends RxPresenter> extends BaseAc
         option.setOpenGps(true);
         option.setLocationNotify(true);
         option.setIgnoreKillProcess(false);
+        option.setIsNeedLocationDescribe(true);
         option.SetIgnoreCacheException(false);
         option.setWifiCacheTimeOut(5*60*1000);
         option.setEnableSimulateGps(false);
@@ -53,7 +54,7 @@ public abstract class BaseLocationActivity<T extends RxPresenter> extends BaseAc
                 receiveLocation(BaiduMapUtil.bdLocation2LocationInfo(bdLocation));
             }
         });
-        mLocationClient.start();
+        mLocationClient.restart();
     }
 
 

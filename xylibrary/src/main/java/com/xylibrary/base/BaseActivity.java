@@ -2,7 +2,6 @@ package com.xylibrary.base;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -40,7 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity implements com.xyli
     }
 
 
-    @LayoutRes
+
     public abstract int getLayoutResource();
 
 

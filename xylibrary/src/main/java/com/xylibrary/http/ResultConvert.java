@@ -1,11 +1,9 @@
-package com.xinyiandroid.api;
+package com.xylibrary.http;
 
 
-import com.google.gson.Gson;
+import com.alibaba.fastjson.JSON;
 import com.lzy.okgo.convert.Converter;
-import com.xinyiandroid.application.Constants;
-
-import org.json.JSONObject;
+import com.xylibrary.application.Constants;
 
 import okhttp3.Response;
 import okhttp3.ResponseBody;
@@ -23,10 +21,8 @@ public class ResultConvert<T> implements Converter<ResultEntity<T>> {
 		ResponseBody body = response.body();
 		if (body == null) return null;
 		ResultEntity<T> resultEntity = new ResultEntity<T>();
-		JSONObject jsonObject=new JSONObject(body.string());
 		if (response.code() == Constants.SUCCESSCODE) {
-			resultEntity=new Gson().fromJson(jsonObject.toString(),resultEntity.getClass());
-			return resultEntity;
+			return JSON.parseObject(body.string(),resultEntity.getClass());
 		} else if (response.code() == Constants.UNAUTHORIZEDCODE) {
 			throw new Exception(Constants.UNAUTHORIZED);
 		} else if (response.code()==Constants.SERVERERRORCODE){
