@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/contentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/fl_camera_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#33000000">
+
+        <TextView
+            android:id="@+id/title_text"
+            style="@style/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="拍照" />
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/iv_faceMask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btm_layout"
+        android:layout_below="@+id/title"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/face_mask" />
+
+
+    <ImageView
+        android:id="@+id/iv_resultImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" />
+
+    <RelativeLayout
+        android:id="@+id/btm_layout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:background="#33000000">
+
+
+        <ImageView
+            android:id="@+id/iv_no_photo"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/no_icon"
+            android:scaleType="fitCenter"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/iv_take_photo"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:background="@drawable/take_photo_btn"
+            android:scaleType="fitCenter" />
+
+        <RelativeLayout
+            android:id="@+id/rl_change_camera"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/camera_picker_bg"
+                android:scaleType="centerCrop" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_select_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:minHeight="50dp"
+            android:minWidth="80dp"
+            android:text="选择照片"
+            android:textColor="@android:color/white" />
+
+
+        <ImageView
+            android:id="@+id/iv_yes_photo"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="50dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/yes_icon"
+            android:scaleType="fitCenter"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+</RelativeLayout>

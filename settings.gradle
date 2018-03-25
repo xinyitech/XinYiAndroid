@@ -1,1 +1,1 @@
-include ':app', ':xylibrary', ':xymaplibrary'
+include ':app', ':xylibrary', ':xymaplibrary', ':cameraview'

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:camera="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <SurfaceView
+        android:id="@+id/surfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.xinyi.xycameraview.ui.view.FocusImageView
+        android:id="@+id/focusImageView"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="50dp"
+        camera:focus_fail_id="@drawable/focus_focus_failed"
+        camera:focus_focusing_id="@drawable/focus_focusing"
+        camera:focus_success_id="@drawable/focus_focused" />
+</FrameLayout>

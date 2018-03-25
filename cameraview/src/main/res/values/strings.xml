@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">XYCameraView</string>
+    <string name="camera_open_fail">相机打开失败</string>
+</resources>
