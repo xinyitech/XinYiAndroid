@@ -28,7 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.xinyiandroid.ui.StateLayoutActivity"></activity>
+        <activity android:name="com.xinyiandroid.ui.OkgoHttpRequestActivity"></activity>
         <activity android:name="com.xinyiandroid.ui.FormActivity"></activity>
         <activity android:name="com.xinyiandroid.ui.BdMapActivity"></activity>
         <activity android:name="com.xinyiandroid.ui.CameraActivity" />

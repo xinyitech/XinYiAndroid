@@ -13,7 +13,7 @@ import butterknife.Bind;
 import butterknife.OnClick;
 import xinyi.com.xinyiandroid.R;
 
-public class StateLayoutActivity extends BaseLocationActivity<MainPresenter> {
+public class OkgoHttpRequestActivity extends BaseLocationActivity<MainPresenter> {
 
 
     @Bind(R.id.btnRequest)
@@ -32,9 +32,12 @@ public class StateLayoutActivity extends BaseLocationActivity<MainPresenter> {
     }
 
     @Override
-    public void receiveLocation(LocaionInfo location) {
-        ToastUtils.showShort(JSON.toJSONString(location));
+    public void receiveLocation(LocaionInfo location, boolean isSuccess) {
+        if (isSuccess) {
+            ToastUtils.showShort(JSON.toJSONString(location));
+        }
     }
+
 
     @Override
     public int getLayoutResource() {

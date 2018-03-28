@@ -20,7 +20,6 @@ import butterknife.ButterKnife;
 
 public abstract class BaseLocationActivity<T extends RxPresenter> extends BaseActivity {
     public T mPresenter;
-
     public LocationClient mLocationClient = null;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,23 +43,36 @@ public abstract class BaseLocationActivity<T extends RxPresenter> extends BaseAc
         option.setLocationNotify(true);
         option.setIgnoreKillProcess(false);
         option.setIsNeedLocationDescribe(true);
+        option.setIsNeedAddress(true);
         option.SetIgnoreCacheException(false);
         option.setWifiCacheTimeOut(5*60*1000);
-        option.setEnableSimulateGps(false);
+        option.setOpenGps(true);//打开Gps
         mLocationClient.setLocOption(option);
         mLocationClient.registerLocationListener(new BDAbstractLocationListener() {
             @Override
-            public void onReceiveLocation(BDLocation bdLocation) {
-                receiveLocation(BaiduMapUtil.bdLocation2LocationInfo(bdLocation));
+            public void onReceiveLocation(BDLocation location) {
+                if (location.getLocType() == BDLocation.TypeGpsLocation) {// GPS定位结果
+                    receiveLocation(BaiduMapUtil.bdLocation2LocationInfo(location), true);
+                } else if (location.getLocType() == BDLocation.TypeNetWorkLocation) {// 网络定位结果
+                    receiveLocation(BaiduMapUtil.bdLocation2LocationInfo(location), true);
+                } else if (location.getLocType() == BDLocation.TypeOffLineLocation) {// 离线定位结果
+                    receiveLocation(BaiduMapUtil.bdLocation2LocationInfo(location), true);
+                } else if (location.getLocType() == BDLocation.TypeServerError) { //服务端网络定位失败
+                    receiveLocation(BaiduMapUtil.bdLocation2LocationInfo(location),false);
+                } else if (location.getLocType() == BDLocation.TypeNetWorkException) { //网络不同导致定位失败，请检查网络是否通畅
+                    receiveLocation(BaiduMapUtil.bdLocation2LocationInfo(location),false);
+                } else if (location.getLocType() == BDLocation.TypeCriteriaException) { //无法获取有效定位依据导致定位失败，一般是由于手机的原因，处于飞行模式下一般会造成这种结果，可以试着重启手机
+                    receiveLocation(BaiduMapUtil.bdLocation2LocationInfo(location),false);
+                }
             }
         });
-        mLocationClient.restart();
+        mLocationClient.start();
     }
 
 
     public abstract T  inject();
     public abstract void initView();
-    public abstract void receiveLocation(LocaionInfo location);
+    public abstract void receiveLocation(LocaionInfo location, boolean isSuccess);
     @Override
     protected void onDestroy() {
         super.onDestroy();

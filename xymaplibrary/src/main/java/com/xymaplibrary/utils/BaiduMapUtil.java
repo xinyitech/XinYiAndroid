@@ -5,7 +5,6 @@ import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import com.baidu.location.BDLocation;
 import com.baidu.mapapi.model.LatLng;
-import com.baidu.mapapi.utils.CoordinateConverter;
 import com.xymaplibrary.modle.BaiduFence;
 import com.xymaplibrary.modle.LocaionInfo;
 import com.xymaplibrary.modle.XinyiLatLng;
@@ -38,28 +37,6 @@ public class BaiduMapUtil {
         LocaionInfo li = new LocaionInfo(location.getLatitude(), location.getLongitude(), location.getAddrStr(), location.getLocType());
         return li;
     }
-
-
-
-    // 将google地图、soso地图、aliyun地图、mapabc地图和amap地图// 所用坐标转换成百度坐标
-    public static LatLng GCJ2Baidu09ll(LatLng gcj2Latlngt) {
-        CoordinateConverter converter = new CoordinateConverter();
-        converter.from(CoordinateConverter.CoordType.COMMON);
-        // sourceLatLng待转换坐标
-        converter.coord(gcj2Latlngt);
-        return converter.convert();
-
-    }
-
-    // 将google地图、soso地图、aliyun地图、mapabc地图和amap地图// 所用坐标转换成百度坐标
-    public static LatLng GPS209ll(LatLng gcj2Latlngt) {
-        CoordinateConverter converter = new CoordinateConverter();
-        converter.from(CoordinateConverter.CoordType.GPS);
-        // sourceLatLng待转换坐标
-        converter.coord(gcj2Latlngt);
-        return converter.convert();
-    }
-
 
     public static LatLng xinLatlngt2LatLngt(XinyiLatLng latLng) {
         return new LatLng(latLng.latitude, latLng.longitude);

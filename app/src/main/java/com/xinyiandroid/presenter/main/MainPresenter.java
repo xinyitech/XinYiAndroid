@@ -12,7 +12,7 @@ import com.xylibrary.utils.ComposeUtil;
 public class MainPresenter extends RxPresenter {
 
     public void Login(String... strings) {
-        ApiManager.<LoginModel>Login()
+        ApiManager.<LoginModel>Login(strings)
                 .compose(ComposeUtil.composeUtil(LoginModel.class, mView, 1))
                 .subscribe(loginModel -> {
 

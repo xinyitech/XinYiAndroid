@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         ImageTitleAdapter<ImageTitleModel> titleAdapter = new ImageTitleAdapter<>();
 
         List<ImageTitleModel> imageTitleModels = new ArrayList<>();
-        imageTitleModels.add(new ImageTitleModel(R.mipmap.ic_launcher, "StateLayoutActivity").setClazz(StateLayoutActivity.class));
+        imageTitleModels.add(new ImageTitleModel(R.mipmap.ic_launcher, "OkgoHttpRequestActivity").setClazz(OkgoHttpRequestActivity.class));
         imageTitleModels.add(new ImageTitleModel(R.mipmap.ic_launcher, "FormActivity").setClazz(FormActivity.class));
         imageTitleModels.add(new ImageTitleModel(R.mipmap.ic_launcher, "BdMapActivity").setClazz(BdMapActivity.class));
         imageTitleModels.add(new ImageTitleModel(R.mipmap.ic_launcher, "CameraActivity").setClazz(CameraActivity.class));
