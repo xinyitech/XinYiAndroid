@@ -1,5 +1,8 @@
 package com.xinyiandroid.presenter.main;
 
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
+import com.blankj.utilcode.util.ToastUtils;
 import com.xinyiandroid.api.ApiManager;
 import com.xinyiandroid.ui.model.LoginModel;
 import com.xylibrary.base.RxPresenter;
@@ -12,11 +15,11 @@ import com.xylibrary.utils.ComposeUtil;
 public class MainPresenter extends RxPresenter {
 
     public void Login(String... strings) {
-        ApiManager.<LoginModel>Login(strings)
-                .compose(ComposeUtil.composeUtil(LoginModel.class, mView, 1))
+        addSubscribe(ApiManager.<LoginModel>Login(new TypeReference<LoginModel>() {}, strings)
+                .compose(ComposeUtil.composeUtil(mView))
                 .subscribe(loginModel -> {
-
-                }, throwableConsumer);
+                    ToastUtils.showShort(JSONObject.toJSONString(loginModel));
+                }, throwableConsumer));
     }
 
 

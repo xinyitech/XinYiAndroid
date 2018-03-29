@@ -1,9 +1,9 @@
 package com.xinyiandroid.api;
 
+import com.alibaba.fastjson.TypeReference;
 import com.lzy.okgo.OkGo;
 import com.lzy.okrx2.adapter.ObservableBody;
 import com.xylibrary.http.ResultConvert;
-import com.xylibrary.http.ResultEntity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,7 +20,7 @@ public class ApiManager {
 
 
     //登录接口
-    public static <T> Observable<ResultEntity<T>> Login(String...a) {
+    public static <T> Observable<T> Login(TypeReference typeReference,String...a) {
         JSONObject jsonObject=new JSONObject();
         try {
             jsonObject.put("userName",a[0]);
@@ -30,11 +30,11 @@ public class ApiManager {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return OkGo.<ResultEntity<T>>post(login)
+        return OkGo.<T>post(login)
                 .headers("Authorization","")
                 .upJson(jsonObject.toString())//
-                .converter(new ResultConvert<T>())
-                .adapt(new ObservableBody<ResultEntity<T>>());
+                .converter(new ResultConvert<T>(typeReference))
+                .adapt(new ObservableBody<T>());
 
 
     }

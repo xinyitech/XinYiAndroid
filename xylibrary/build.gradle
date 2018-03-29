@@ -40,7 +40,5 @@ dependencies {
     compile rootProject.ext.dependencies["rxandroid"]
     compile rootProject.ext.dependencies["butterknife"]
     compile rootProject.ext.dependencies["fastjson"]
-
-
-
+    compile rootProject.ext.dependencies["glide"]
 }
