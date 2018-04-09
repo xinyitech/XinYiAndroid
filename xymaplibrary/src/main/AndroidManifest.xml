@@ -19,5 +19,6 @@
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote"></service>
+        <activity android:name=".base.OfflineMapActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 </manifest>

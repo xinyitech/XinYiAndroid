@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingRight="15dp"
+    android:paddingLeft="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="90dp">
+    <TextView
+        android:id="@+id/tvCity"
+        android:text="深圳市"
+        android:textSize="16dp"
+        android:textColor="#181818"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tvState"
+        android:text="最新"
+        android:textSize="16dp"
+        android:layout_marginLeft="25dp"
+        android:textColor="#e13b3b"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/tvCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btDown"
+        android:text="下载"
+        android:background="@drawable/shape_button_down"
+        android:textColor="#ffffff"
+        android:textSize="16dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="0dp"
+        android:layout_width="80dp"
+        android:layout_height="40dp" />
+</RelativeLayout>

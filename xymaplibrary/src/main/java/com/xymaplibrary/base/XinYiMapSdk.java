@@ -10,7 +10,6 @@ import com.baidu.mapapi.SDKInitializer;
  */
 
 public class XinYiMapSdk {
-
     public static void  initMapSdk(Application application){
         SDKInitializer.initialize(application);
     }

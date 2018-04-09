@@ -10,6 +10,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xinyiandroid.adapter.ImageTitleAdapter;
 import com.xinyiandroid.model.ImageTitleModel;
 import com.xinyiandroid.utils.recycleview.RecyclerViewHelper;
+import com.xymaplibrary.base.OfflineMapActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         imageTitleModels.add(new ImageTitleModel(R.mipmap.ic_launcher, "FormActivity").setClazz(FormActivity.class));
         imageTitleModels.add(new ImageTitleModel(R.mipmap.ic_launcher, "BdMapActivity").setClazz(BdMapActivity.class));
         imageTitleModels.add(new ImageTitleModel(R.mipmap.ic_launcher, "CameraActivity").setClazz(CameraActivity.class));
+        imageTitleModels.add(new ImageTitleModel(R.mipmap.ic_launcher, "OfflineMapActivity").setClazz(OfflineMapActivity.class));
         titleAdapter.addData(imageTitleModels);
 
         RecyclerViewHelper.initRecyclerViewG(mRecyclerView, true, titleAdapter, 3);
