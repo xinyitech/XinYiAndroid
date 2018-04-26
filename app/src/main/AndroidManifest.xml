@@ -32,6 +32,7 @@
         <activity android:name="com.xinyiandroid.ui.FormActivity"></activity>
         <activity android:name="com.xinyiandroid.ui.BdMapActivity"></activity>
         <activity android:name="com.xinyiandroid.ui.CameraActivity" />
+        <activity android:name="com.xinyiandroid.ui.AddMapMarkActivity"/>
     </application>
 
 </manifest>

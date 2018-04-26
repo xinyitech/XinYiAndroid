@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -31,6 +32,13 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     //compile project(':xylibrary')
-    implementation project(':xymaplibrary')
+    compile project(':xymaplibrary')
     compile project(':cameraview')
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    compile project(path: ':xymaplibrary')
+
+    compile project(path: ':cameraview')
+}
+repositories {
+    mavenCentral()
 }

@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+
         ImageTitleAdapter<ImageTitleModel> titleAdapter = new ImageTitleAdapter<>();
 
         List<ImageTitleModel> imageTitleModels = new ArrayList<>();
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         imageTitleModels.add(new ImageTitleModel(R.mipmap.ic_launcher, "BdMapActivity").setClazz(BdMapActivity.class));
         imageTitleModels.add(new ImageTitleModel(R.mipmap.ic_launcher, "CameraActivity").setClazz(CameraActivity.class));
         imageTitleModels.add(new ImageTitleModel(R.mipmap.ic_launcher, "OfflineMapActivity").setClazz(OfflineMapActivity.class));
+        imageTitleModels.add(new ImageTitleModel(R.mipmap.ic_launcher, "AddMarkMapActivity").setClazz(AddMapMarkActivity.class));
         titleAdapter.addData(imageTitleModels);
 
         RecyclerViewHelper.initRecyclerViewG(mRecyclerView, true, titleAdapter, 3);

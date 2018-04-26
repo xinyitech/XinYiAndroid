@@ -15,7 +15,7 @@ import com.xylibrary.utils.ComposeUtil;
 public class MainPresenter extends RxPresenter {
 
     public void Login(String... strings) {
-        addSubscribe(ApiManager.<LoginModel>Login(new TypeReference<LoginModel>() {}, strings)
+        addSubscribe(ApiManager.Companion.<LoginModel>Login(new TypeReference<LoginModel>() {}, strings)
                 .compose(ComposeUtil.composeUtil(mView))
                 .subscribe(loginModel -> {
                     ToastUtils.showShort(JSONObject.toJSONString(loginModel));

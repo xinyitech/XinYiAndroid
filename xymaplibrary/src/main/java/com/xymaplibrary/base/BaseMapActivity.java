@@ -39,16 +39,18 @@ public abstract class BaseMapActivity<T extends RxPresenter> extends BaseLocatio
     }
 
     public void initMap() {
+
         mMapView = findViewById(R.id.mapView);
         mBaiduMap = mMapView.getMap();
         mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);//普通模式的
         LatLng cenpt = new LatLng(22.61667, 114.06667);
         MapStatus mMapStatus = new MapStatus.Builder()
                 .target(cenpt)
-                .zoom(19)
+                .zoom(21)
                 .build();
         MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);
         mBaiduMap.setMapStatus(mMapStatusUpdate);//
+        mBaiduMap.setMyLocationEnabled(true);
         mBaiduMap.setOnMapClickListener(new BaiduMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
