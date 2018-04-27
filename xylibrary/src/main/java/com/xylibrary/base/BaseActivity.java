@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.WindowManager;
 
 import com.fingdo.statelayout.StateLayout;
 import com.xylibrary.widget.LoadingDialig;
@@ -30,7 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity implements com.xyli
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(getLayoutResource());
         toolBar = findViewById(R.id.toolBar);

@@ -1,10 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <com.baidu.mapapi.map.MapView
         android:id="@+id/mapView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:clickable="true" />
+
+    <RelativeLayout
+        android:id="@+id/r_layout"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <TextView
+            android:padding="4dp"
+            android:background="#ffffff"
+            android:id="@+id/tvAddress"
+            android:text="当前地址"
+            android:textSize="14dp"
+            android:textColor="#7e7d7d"
+            android:maxLines="2"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvAddress"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/icon_geo"/>
+
+    </RelativeLayout>
 </FrameLayout>

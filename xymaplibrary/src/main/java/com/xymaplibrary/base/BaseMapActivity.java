@@ -2,11 +2,10 @@ package com.xymaplibrary.base;
 
 
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.baidu.mapapi.map.BaiduMap;
-import com.baidu.mapapi.map.InfoWindow;
-import com.baidu.mapapi.map.MapPoi;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
@@ -25,6 +24,7 @@ import com.xymaplibrary.modle.LocaionInfo;
 
 /**
  * Created by jiajun.wang on 2018/3/21.
+ * rLayout 是一个布局，
  */
 
 public abstract class BaseMapActivity<T extends RxPresenter> extends BaseLocationActivity {
@@ -32,6 +32,8 @@ public abstract class BaseMapActivity<T extends RxPresenter> extends BaseLocatio
     public MapView mMapView;
     public BaiduMap mBaiduMap;
     public GeoCoder mGeoCoder;
+    public TextView address;
+    private RelativeLayout rLayout;
 
     @Override
     public void initView() {
@@ -39,7 +41,9 @@ public abstract class BaseMapActivity<T extends RxPresenter> extends BaseLocatio
     }
 
     public void initMap() {
-
+        rLayout = findViewById(R.id.r_layout);
+        rLayout.setVisibility(View.VISIBLE);
+        address = findViewById(R.id.tvAddress);
         mMapView = findViewById(R.id.mapView);
         mBaiduMap = mMapView.getMap();
         mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);//普通模式的
@@ -50,17 +54,20 @@ public abstract class BaseMapActivity<T extends RxPresenter> extends BaseLocatio
                 .build();
         MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);
         mBaiduMap.setMapStatus(mMapStatusUpdate);//
-        mBaiduMap.setMyLocationEnabled(true);
-        mBaiduMap.setOnMapClickListener(new BaiduMap.OnMapClickListener() {
+        mBaiduMap.setMyLocationEnabled(false);
+        mBaiduMap.setOnMapStatusChangeListener(new BaiduMap.OnMapStatusChangeListener() {
             @Override
-            public void onMapClick(LatLng latLng) {
-                // 反Geo搜索
-                reverseGeoCode(latLng);
+            public void onMapStatusChangeStart(MapStatus mapStatus) {
+                if (address != null)
+                    address.setText("获取地址中...");
             }
             @Override
-            public boolean onMapPoiClick(MapPoi mapPoi) {
-                reverseGeoCode(mapPoi.getPosition());
-                return false;
+            public void onMapStatusChangeStart(MapStatus mapStatus, int i) {}
+            @Override
+            public void onMapStatusChange(MapStatus mapStatus) {}
+            @Override
+            public void onMapStatusChangeFinish(MapStatus mapStatus) {
+                reverseGeoCode(mapStatus.target);//
             }
         });
     }
@@ -73,13 +80,16 @@ public abstract class BaseMapActivity<T extends RxPresenter> extends BaseLocatio
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        //销毁地图
         mMapView.onDestroy();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mMapView.onResume();//在activity执行onResume时执行mMapView. onResume ()，实现地图生命周期管理
+        if (mMapView!=null){
+            mMapView.onResume();//在activity执行onResume时执行mMapView. onResume ()，实现地图生命周期管理
+        }
     }
 
     @Override
@@ -98,49 +108,38 @@ public abstract class BaseMapActivity<T extends RxPresenter> extends BaseLocatio
         }
     }
 
-    //绘制标志物，并且让地图移动到对应的位置
+    //地图移动到对应的LatLng位置
     public void move2Position(LocaionInfo location) {
         LatLng point = new LatLng(location.getLat(), location.getLongt());
-        View view = View.inflate(getApplicationContext(), R.layout.show_position, null);
-        TextView address = view.findViewById(R.id.tvAddress);
         address.setText(location.getAddress());
-        InfoWindow mInfoWindow = new InfoWindow(view, point, -47);
-        mBaiduMap.showInfoWindow(mInfoWindow);
-
         mMapView.requestFocus();
         MapStatus.Builder builder = new MapStatus.Builder();
         builder.target(point);
         mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
-
     }
 
 
     //根据经纬度反编译得到地址
     public void reverseGeoCode(LatLng latLng) {
-        if (mGeoCoder==null)
-            mGeoCoder= GeoCoder.newInstance();
+        if (mGeoCoder == null)
+            mGeoCoder = GeoCoder.newInstance();
+
         mGeoCoder.setOnGetGeoCodeResultListener(new OnGetGeoCoderResultListener() {
             @Override
-            public void onGetGeoCodeResult(GeoCodeResult geoCodeResult) {
-            }
+            public void onGetGeoCodeResult(GeoCodeResult geoCodeResult) {}
             @Override
             public void onGetReverseGeoCodeResult(ReverseGeoCodeResult reverseGeoCodeResult) {
                 if (reverseGeoCodeResult == null || reverseGeoCodeResult.error != SearchResult.ERRORNO.NO_ERROR) {
                     ToastUtils.showShort("抱歉，未能找到结果");
                     return;
                 }
-                mBaiduMap.clear();
-                LocaionInfo locaionInfo = new LocaionInfo();
-                locaionInfo.setAddress(reverseGeoCodeResult.getAddress()+reverseGeoCodeResult.getSematicDescription());
-                locaionInfo.setLat(reverseGeoCodeResult.getLocation().latitude);
-                locaionInfo.setLongt(reverseGeoCodeResult.getLocation().longitude);
-                move2Position(locaionInfo);
+                address.setText(reverseGeoCodeResult.getAddress());
             }
         });
 
-        boolean bl=mGeoCoder.reverseGeoCode(new ReverseGeoCodeOption()
+        boolean bl = mGeoCoder.reverseGeoCode(new ReverseGeoCodeOption()
                 .location(latLng).newVersion(1));
-        if (!bl){
+        if (!bl) {
             ToastUtils.showShort("请重新选取位置");
             return;
         }

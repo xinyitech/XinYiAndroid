@@ -109,7 +109,7 @@ public class DefaultClusterRenderer<T extends ClusterItem> implements ClusterRen
      * If cluster size is less than this size, display individual markers.
      * add myself
      */
-    private static final int MIN_CLUSTER_SIZE = 1;//最小聚合个数
+    private static final int MIN_CLUSTER_SIZE = 1;//最小聚合个数，当点位有几千个的时候，可以动态改变这个值，
 
     /**
      * The currently displayed set of clusters.
@@ -305,7 +305,7 @@ public class DefaultClusterRenderer<T extends ClusterItem> implements ClusterRen
      * Determine whether the cluster should be rendered as individual markers or a cluster.
      */
     protected boolean shouldRenderAsCluster(Cluster<T> cluster) {
-        return cluster.getSize() > MIN_CLUSTER_SIZE;
+        return cluster.getSize() > MIN_CLUSTER_SIZE;//来缩小点_SIZE;
     }
 
     /**

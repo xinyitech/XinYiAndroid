@@ -1,6 +1,7 @@
 package com.xinyiandroid.ui;
 
 import android.graphics.Bitmap;
+import android.view.View;
 import android.widget.Toast;
 
 import com.baidu.mapapi.map.BaiduMap;
@@ -21,6 +22,12 @@ import java.util.List;
 
 /**
  * Created by jiajun.wang on 2018/4/25.
+ * 修改此demo，写出适合自己的代码
+ * 1  ClusterBaiduItem。 定义数据体。往往包括，经纬度，地址，icon
+ * 2. DefaultClusterRenderer修改类，只是修改其中的getIcon,getDesc等方法，其它的不要改动
+ * 3. mClusterManager.addItems(mClusterBaiduItems);//添加等待绘制的model
+   调用mClusterManager.cluster();//开始绘制
+ *
  */
 
 public class AddMapMarkActivity extends BaseMapActivity  {
@@ -43,6 +50,7 @@ public class AddMapMarkActivity extends BaseMapActivity  {
     @Override
     public void initView() {
         super.initView();
+        mMapView.setVisibility(View.VISIBLE);
         mClusterBaiduItems.add(new ClusterBaiduItem(new LatLng(22.5428895303695,113.94907076522427)));
         mClusterBaiduItems.add(new ClusterBaiduItem(new LatLng(22.53816666,113.94979804191999)));
         mClusterBaiduItems.add(new ClusterBaiduItem(new LatLng(22.54198669,113.94898492)));
@@ -60,8 +68,6 @@ public class AddMapMarkActivity extends BaseMapActivity  {
         //mBaiduMap.setOnMapLoadedCallback(this);地图加载完成回调
         mClusterManager.addItems(mClusterBaiduItems);//添加等待绘制的model
         mClusterManager.cluster();//开始绘制
-
-
         initListener();//添加聚合监听
     }
 
@@ -69,23 +75,18 @@ public class AddMapMarkActivity extends BaseMapActivity  {
         mClusterManager.setOnMapStatusChangeListener(new BaiduMap.OnMapStatusChangeListener() {
             @Override
             public void onMapStatusChangeStart(MapStatus mapStatus) {
-                String s="onMapStatusChangeStart";
-            }
-
-            @Override
-            public void onMapStatusChangeStart(MapStatus mapStatus, int i) {
-                String s="onMapStatusChangeStart";
+                if (address != null)
+                    address.setText("获取地址中...");
             }
             @Override
-            public void onMapStatusChange(MapStatus mapStatus) {
-                String s="onMapStatusChange";
-            }
+            public void onMapStatusChangeStart(MapStatus mapStatus, int i) {}
+            @Override
+            public void onMapStatusChange(MapStatus mapStatus) {}
             @Override
             public void onMapStatusChangeFinish(MapStatus mapStatus) {
-
+                reverseGeoCode(mapStatus.target);//
             }
         });
-
         mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -129,14 +130,12 @@ public class AddMapMarkActivity extends BaseMapActivity  {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         //销毁对应的bitmap
         if (mCLBitmap != null && !mCLBitmap.isRecycled()) {
             mCLBitmap.recycle();
         }
         mClusterManager.clearItems();
-        mBaiduMap.clear();
-        //;销毁地图
-        mMapView.onDestroy();
+        super.onDestroy();
+
     }
 }
